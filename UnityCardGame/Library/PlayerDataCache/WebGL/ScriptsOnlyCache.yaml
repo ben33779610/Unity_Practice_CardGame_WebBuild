@@ -372,7 +372,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: bfadfc6cad14a6be81ee3e99d0aebb88
+      Hash: cfda085a99122af444da7f11dca61c1b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -505,4 +505,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - "Assets/\u7DF4\u7FD2\u5834\u666F.unity"
-  playerPath: C:/KID/Projects/Unity/Unity_Practice_CardGame_WebBuild/Web
+  playerPath: D:/unity/pratice/Unity_Practice_CardGame_WebBuild/Web

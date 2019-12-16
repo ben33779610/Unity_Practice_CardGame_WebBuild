@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] cards;
     [Header("發牌按鈕")]
     public Button btnGetCard;
+
+	public Text winorlose;
     
     private int player, pc;     // 玩家、電腦卡片編號
 
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         return r + 1;
     }
+
     #endregion
 
     #region 練習區域
@@ -59,19 +63,41 @@ public class GameManager : MonoBehaviour
     public AudioClip soundWin;      // 獲勝
     public AudioClip soundLose;     // 失敗
     public AudioClip soundTie;      // 平手
+	public GameObject gUi;
 
     private AudioSource aud;        // 音效來源：喇叭
 
 
-    /// <summary>
-    /// 勝負顯示：使用玩家與電腦取得卡片判斷獲勝、平手或失敗
-    /// 玩家卡片編號：player
-    /// 電腦卡片編號：pc
-    /// 顯示結算畫面
-    /// </summary>
-    private void GameWinner()
-    {
-        
-    }
+	/// <summary>
+	/// 勝負顯示：使用玩家與電腦取得卡片判斷獲勝、平手或失敗
+	/// 玩家卡片編號：player
+	/// 電腦卡片編號：pc
+	/// 顯示結算畫面
+	/// </summary>
+	private void GameWinner()
+	{
+		gUi.SetActive(true);
+		if (player > pc)
+		{
+			aud.PlayOneShot(soundWin);
+			winorlose.text = "喔齁，贏了喔";
+		}
+		else if (player < pc)
+		{
+			winorlose.text = "勝敗乃兵家常事，請重新來過";
+			aud.PlayOneShot(soundLose);
+		}
+		else
+		{
+			winorlose.text = "平守了喔";
+			aud.PlayOneShot(soundTie);
+		}
+	}
+	public void Retry()
+	{
+		SceneManager.LoadScene("練習場景");
+	}
+		
+	
     #endregion
 }
